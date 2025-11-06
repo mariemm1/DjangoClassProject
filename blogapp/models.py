@@ -1,0 +1,12 @@
+from django.db import models
+from django.contrib.auth.models import User
+
+class Author(models.Model):
+    bio = models.TextField(blank=True, null=True)
+
+
+class BlogPost(models.Model):
+    title = models.CharField(max_length=255)
+    content = models.TextField()
+    author = models.ForeignKey(Author, on_delete=models.CASCADE)
+    created_on = models.DateTimeField(blank=True, null=True)
